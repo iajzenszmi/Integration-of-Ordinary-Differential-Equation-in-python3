@@ -1,0 +1,70 @@
+(base) ian@ian-Latitude-E7440:~$ cat intdif.py
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Define the ODE
+def exponential_growth(t, y, k):
+    return k * y
+
+# Constant k (can be positive for growth or negative for decay)
+k = 0.1
+
+# Initial condition
+y0 = [1]
+
+# Time span (from t=0 to t=10)
+t_span = (0, 10)
+t_eval = np.linspace(t_span[0], t_span[1], 100)
+
+# Solve the ODE
+sol = solve_ivp(exponential_growth, t_span, y0, args=(k,), t_eval=t_eval)
+
+# Plotting
+plt.plot(sol.t, sol.y[0], label='y(t)')
+plt.xlabel('Time t')
+plt.ylabel('y(t)')
+plt.title('Exponential Growth/Decay')
+plt.legend()
+plt.grid(True)
+plt.show()
+(base) ian@ian-Latitude-E7440:~$ sloccount intdif.py
+Have a non-directory at the top, so creating directory top_dir
+Adding /home/ian/intdif.py to top_dir
+Categorizing files.
+Finding a working MD5 command....
+Found a working MD5 command.
+Computing results.
+
+
+SLOC	Directory	SLOC-by-Language (Sorted)
+17      top_dir         python=17
+
+
+Totals grouped by language (dominant language first):
+python:          17 (100.00%)
+
+
+
+
+Total Physical Source Lines of Code (SLOC)                = 17
+Development Effort Estimate, Person-Years (Person-Months) = 0.00 (0.03)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 0.06 (0.69)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 0.05
+Total Estimated Cost to Develop                           = $ 375
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
+SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
+SLOCCount comes with ABSOLUTELY NO WARRANTY, and you are welcome to
+redistribute it under certain conditions as specified by the GNU GPL license;
+see the documentation for details.
+Please credit this data as "generated using David A. Wheeler's 'SLOCCount'."
+(base) ian@ian-Latitude-E7440:~$ time python3 intdif.py
+libGL error: MESA-LOADER: failed to open crocus: /usr/lib/dri/crocus_dri.so: cannot open shared object file: No such file or directory (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: crocus
+libGL error: MESA-LOADER: failed to open crocus: /usr/lib/dri/crocus_dri.so: cannot open shared object file: No such file or directory (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: crocus
+libGL error: MESA-LOADER: failed to open swrast: /usr/lib/dri/swrast_dri.so: cannot open shared object file: No such file or directory (search paths /usr/lib/x86_64-linux-gnu/dri:\$${ORIGIN}/dri:/usr/lib/dri, suffix _dri)
+libGL error: failed to load driver: swrast
